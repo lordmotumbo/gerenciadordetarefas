@@ -1,0 +1,392 @@
+/* Estilos Globais e Temas */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 20px;
+    box-sizing: border-box;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.tema-claro {
+    background-color: #f4f7f6; /* Cinza bem claro */
+    color: #333;
+}
+
+.tema-escuro {
+    background-color: #2c3e50; /* Azul escuro/acinzentado */
+    color: #ecf0f1; /* Branco acinzentado */
+}
+
+.container-principal {
+    display: flex;
+    gap: 20px;
+    max-width: 1200px;
+    margin: auto;
+}
+
+.barra-lateral {
+    width: 300px;
+    min-width: 280px;
+    background-color: #fff; /* Será ajustado pelo tema */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    height: fit-content;
+}
+
+.tema-escuro .barra-lateral {
+    background-color: #34495e; /* Azul um pouco mais claro que o body */
+    box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+}
+
+.conteudo-principal {
+    flex-grow: 1;
+    background-color: #fff; /* Será ajustado pelo tema */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.tema-escuro .conteudo-principal {
+    background-color: #34495e;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+}
+
+h1, h2, h3 {
+    margin-top: 0;
+}
+
+.tema-claro h1, .tema-claro h2, .tema-claro h3 {
+    color: #2c3e50;
+}
+
+.tema-escuro h1, .tema-escuro h2, .tema-escuro h3 {
+    color: #ecf0f1;
+}
+
+/* Botão de Tema */
+.container-tema {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+}
+
+#botaoAlternarTema {
+    background: none;
+    border: 1px solid #ccc;
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.2em;
+}
+.tema-claro #botaoAlternarTema {
+    color: #333;
+    border-color: #ccc;
+}
+.tema-escuro #botaoAlternarTema {
+    color: #ecf0f1;
+    border-color: #555;
+}
+#botaoAlternarTema:hover {
+    opacity: 0.8;
+}
+
+/* Formulários e Inputs */
+input[type="text"], select {
+    width: calc(100% - 22px); /* Ajuste para padding e borda */
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.tema-escuro input[type="text"], .tema-escuro select {
+    background-color: #566573;
+    border-color: #444;
+    color: #ecf0f1;
+}
+
+button {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.2s, transform 0.1s;
+}
+
+button:hover {
+    opacity: 0.9;
+    transform: translateY(-1px);
+}
+
+.botao-adicionar {
+    background-color: #27ae60; /* Verde */
+    color: white;
+    width: 100%;
+}
+
+.botao-salvar {
+    background-color: #2980b9; /* Azul */
+    color: white;
+}
+
+.botao-cancelar, .botao-fechar-modal {
+    background-color: #c0392b; /* Vermelho */
+    color: white;
+    margin-left: 10px;
+}
+
+/* Lista de Pessoas */
+#listaPessoasUl {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+#listaPessoasUl li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    border-bottom: 1px solid #eee;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.tema-escuro #listaPessoasUl li {
+    border-bottom-color: #4a6075;
+}
+
+#listaPessoasUl li:hover, #listaPessoasUl li.selecionada {
+    background-color: #e9ecef;
+}
+
+.tema-escuro #listaPessoasUl li:hover, .tema-escuro #listaPessoasUl li.selecionada {
+    background-color: #4a6075;
+}
+
+.nome-entidade {
+    flex-grow: 1;
+}
+
+.acoes-entidade button {
+    background: none;
+    border: none;
+    padding: 5px;
+    margin-left: 5px;
+    font-size: 0.9em;
+}
+
+.tema-claro .acoes-entidade button {
+    color: #555;
+}
+.tema-escuro .acoes-entidade button {
+    color: #bdc3c7;
+}
+
+.acoes-entidade button:hover {
+    color: #2980b9;
+}
+.tema-escuro .acoes-entidade button:hover {
+    color: #3498db;
+}
+.acoes-entidade .excluir-pessoa-btn:hover, .acoes-entidade .excluir-tarefa-btn:hover {
+    color: #c0392b;
+}
+.tema-escuro .acoes-entidade .excluir-pessoa-btn:hover, .tema-escuro .acoes-entidade .excluir-tarefa-btn:hover {
+    color: #e74c3c;
+}
+
+/* Seção Adicionar Tarefa (Barra Lateral) */
+#secaoAdicionarTarefa.hidden {
+    display: none;
+}
+
+/* Lista de Tarefas */
+#listaTarefasUl {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.tarefa-item {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-left-width: 5px;
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 4px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start; /* Alinha itens ao topo para descrições longas */
+    transition: background-color 0.2s, opacity 0.3s;
+}
+
+.tema-escuro .tarefa-item {
+    background-color: #3b5368;
+    border-color: #506a80;
+}
+
+.tarefa-item.prioridade-Alta {
+    border-left-color: #e74c3c; /* Vermelho */
+}
+.tema-escuro .tarefa-item.prioridade-Alta {
+    background-color: #4a3b3b; /* Tom avermelhado escuro */
+}
+
+.tarefa-item.prioridade-Media {
+    border-left-color: #f39c12; /* Laranja */
+}
+.tema-escuro .tarefa-item.prioridade-Media {
+    background-color: #544a3a; /* Tom alaranjado escuro */
+}
+
+.tarefa-item.prioridade-Baixa {
+    border-left-color: #3498db; /* Azul */
+}
+.tema-escuro .tarefa-item.prioridade-Baixa {
+    background-color: #3a4f60; /* Tom azulado escuro */
+}
+
+.tarefa-item.concluida {
+    opacity: 0.6;
+}
+
+.tarefa-item.concluida .titulo-tarefa {
+    text-decoration: line-through;
+    text-decoration-color: #7f8c8d; /* Cinza para o risco no tema claro */
+    text-decoration-thickness: 2px; /* Aumenta a espessura do risco */
+}
+
+.tema-escuro .tarefa-item.concluida .titulo-tarefa {
+    text-decoration-color: #95a5a6; /* Cinza mais claro para o risco no tema escuro */
+}
+
+.drag-handle {
+    cursor: grab;
+    padding-right: 10px;
+    color: #777;
+}
+.tema-escuro .drag-handle {
+    color: #aaa;
+}
+
+.tarefa-conteudo {
+    flex-grow: 1;
+}
+
+.titulo-tarefa {
+    font-weight: bold;
+    margin: 0 0 5px 0;
+}
+
+.detalhes-tarefa p {
+    font-size: 0.9em;
+    color: #555;
+    margin: 2px 0;
+}
+
+.tema-escuro .detalhes-tarefa p {
+    color: #bdc3c7;
+}
+
+.tarefa-acoes-item {
+    display: flex;
+    flex-direction: column; /* Botões um abaixo do outro */
+    gap: 5px; /* Espaço entre os botões */
+    align-items: flex-end; /* Alinha botões à direita */
+    min-width: 100px; /* Garante espaço para os botões */
+}
+
+.tarefa-acoes-item button {
+    font-size: 0.85em;
+    padding: 6px 10px;
+    width: 100%; /* Faz os botões ocuparem a largura da coluna de ações */
+    box-sizing: border-box;
+}
+
+.completar-tarefa-btn {
+    background-color: #2ecc71; /* Verde esmeralda */
+    color: white;
+}
+
+.editar-tarefa-btn {
+    background-color: #f1c40f; /* Amarelo */
+    color: #333;
+}
+
+.excluir-tarefa-btn {
+    background-color: #e74c3c; /* Vermelho alizarin */
+    color: white;
+}
+
+.tarefa-item.arrastando {
+    opacity: 0.5;
+    border-style: dashed;
+}
+
+.placeholder-tarefas {
+    text-align: center;
+    padding: 20px;
+    color: #777;
+}
+.tema-escuro .placeholder-tarefas {
+    color: #aaa;
+}
+
+/* Modais */
+.modal {
+    display: none; 
+    position: fixed; 
+    z-index: 1000; 
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%; 
+    overflow: auto; 
+    background-color: rgba(0,0,0,0.6);
+}
+
+.modal-conteudo {
+    background-color: #fefefe;
+    margin: 15% auto; 
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; 
+    max-width: 500px;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+.tema-escuro .modal-conteudo {
+    background-color: #34495e;
+    border-color: #555;
+}
+
+.fechar-modal {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.fechar-modal:hover,
+.fechar-modal:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+.tema-escuro .fechar-modal {
+    color: #bdc3c7;
+}
+.tema-escuro .fechar-modal:hover,
+.tema-escuro .fechar-modal:focus {
+    color: #ecf0f1;
+}
+
+.hidden {
+    display: none !important;
+}
+
