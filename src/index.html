@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerenciador de Tarefas</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <!-- Adicionar link para ícones (ex: Font Awesome ou Lucide Icons) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body class="tema-claro"> <!-- Usuário mostrou tema claro na referência -->
+
+    <header>
+        <h1>Gerenciador de Tarefas</h1>
+        <button id="botaoAlternarTema" title="Alternar Tema">
+            <i class="fas fa-moon"></i> <!-- Ícone inicial para tema claro, sugere mudar para escuro -->
+        </button>
+    </header>
+
+    <main class="container-principal">
+        <aside class="barra-lateral">
+            <section id="secaoGerenciarPessoas">
+                <h2>Gerenciar Pessoas</h2>
+                <ul id="listaPessoasUl" class="lista-entidades">
+                    <!-- Pessoas serão carregadas aqui -->
+                </ul>
+                <div class="formulario-acao">
+                    <input type="text" id="inputNomeNovaPessoa" placeholder="Nome da nova pessoa">
+                    <button id="botaoAdicionarNovaPessoa" class="botao-principal">
+                        <i class="fas fa-plus"></i> Adicionar
+                    </button>
+                </div>
+            </section>
+
+            <section id="secaoAdicionarTarefa" class="hidden">
+                <h2 id="tituloAdicionarTarefaPara">Adicionar Tarefa para...</h2>
+                <div class="formulario-acao">
+                    <input type="text" id="inputTituloNovaTarefa" placeholder="Título da tarefa">
+                    <select id="selectPrioridadeNovaTarefa">
+                        <option value="Baixa">Baixa</option>
+                        <option value="Media" selected>Média</option>
+                        <option value="Alta">Alta</option>
+                    </select>
+                    <input type="text" id="inputHorarioNovaTarefa" placeholder="Horário (HH:MM)">
+                    <button id="botaoSalvarNovaTarefa" class="botao-principal">
+                        <i class="fas fa-plus"></i> Adicionar Tarefa
+                    </button>
+                </div>
+            </section>
+        </aside>
+
+        <section id="secaoDetalhesTarefas" class="conteudo-principal">
+            <h2 id="tituloTarefasDePessoa">Tarefas de...</h2>
+            <ul id="listaTarefasUl" class="lista-entidades vertical">
+                <!-- Tarefas da pessoa selecionada serão carregadas aqui -->
+                 <li class="placeholder-tarefas">Selecione uma pessoa para ver suas tarefas ou adicione uma nova pessoa.</li>
+            </ul>
+        </section>
+    </main>
+
+    <!-- Modal para Editar Tarefa (pode ser reutilizado ou um novo) -->
+    <div id="modalEditarTarefa" class="modal">
+        <div class="modal-conteudo">
+            <span class="fechar-modal" id="fecharModalEditarTarefa">&times;</span>
+            <h3>Editar Tarefa</h3>
+            <input type="hidden" id="inputEditarTarefaId">
+            
+            <label for="inputEditarDescricaoTarefa">Descrição:</label>
+            <input type="text" id="inputEditarDescricaoTarefa" placeholder="Descrição da tarefa">
+            
+            <label for="selectEditarPrioridadeTarefa">Prioridade:</label>
+            <select id="selectEditarPrioridadeTarefa">
+                <option value="Baixa">Baixa</option>
+                <option value="Media">Média</option>
+                <option value="Alta">Alta</option>
+            </select>
+            
+            <label for="inputEditarHorarioInicioTarefa">Horário de Início (HH:MM):</label>
+            <input type="text" id="inputEditarHorarioInicioTarefa" placeholder="HH:MM">
+            
+            <button id="botaoSalvarEdicaoTarefa" class="botao-principal">Salvar Alterações</button>
+        </div>
+    </div>
+
+     <!-- Modal para Editar Pessoa -->
+    <div id="modalEditarPessoa" class="modal">
+        <div class="modal-conteudo">
+            <span class="fechar-modal" id="fecharModalEditarPessoa">&times;</span>
+            <h3>Editar Pessoa</h3>
+            <input type="hidden" id="inputEditarPessoaId">
+            <label for="inputEditarNomePessoa">Nome:</label>
+            <input type="text" id="inputEditarNomePessoa" placeholder="Nome da pessoa">
+            <button id="botaoSalvarEdicaoPessoa" class="botao-principal">Salvar Alterações</button>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.min.js"></script>
+    <script src="/static/script.js"></script>
+</body>
+</html>
+
