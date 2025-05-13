@@ -1,0 +1,10 @@
+services:
+  - type: web
+    name: gerenciador-de-tarefas
+    env: python
+    buildCommand: ""
+    startCommand: "python main.py"
+    envVars:
+      - key: FLASK_SECRET_KEY
+        value: "uma-chave-super-secreta"
+    plan: free

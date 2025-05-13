@@ -15,9 +15,8 @@ app = Flask(__name__, template_folder="src", static_folder="static")
 
 # Configuração do Banco de Dados SQLite
 # O arquivo do banco de dados será criado no diretório raiz do projeto Flask.
-project_dir = os.path.dirname(os.path.abspath(__file__))
-parent_dir = os.path.dirname(project_dir) # /home/ubuntu/gerenciador_tarefas
-DATABASE_FILE = os.path.join(parent_dir, "gerenciador_tarefas.db")
+# Novo — garante que o SQLite será salvo em local válido no Render
+DATABASE_FILE = os.path.join("/tmp", "gerenciador_tarefas.db")
 app.config["SQLALCHEMY_DATABASE_URI"] = f"sqlite:///{DATABASE_FILE}"
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 app.config["SECRET_KEY"] = os.getenv("FLASK_SECRET_KEY", "supersecretkey_dev_sqlite")
