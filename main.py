@@ -11,7 +11,7 @@ from src.routes.api import api_bp
 from src.extensions import socketio # Importar socketio de extensions
 
 # Configuração do App
-app = Flask(__name__, template_folder=".", static_folder="static")
+app = Flask(__name__, template_folder="src", static_folder="static")
 
 # Configuração do Banco de Dados SQLite
 # O arquivo do banco de dados será criado no diretório raiz do projeto Flask.
